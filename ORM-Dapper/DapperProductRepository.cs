@@ -31,7 +31,7 @@ namespace ORM_Dapper
         public Product GetProduct(int id)
         {
             return _conn.QuerySingle<Product>("SELECT * FROM products WHERE ProductID = @id;",
-                new { id = id});  //Anonymouns Type <==> Temporary Object to safely pass in parameters
+                new { id = id});  //Parameterized Syntax, Anonymouns Type <==> Temporary Object to safely pass in parameters
         }
 
 

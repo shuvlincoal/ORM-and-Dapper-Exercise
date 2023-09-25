@@ -45,9 +45,8 @@ namespace ORM_Dapper
                 //Console.WriteLine("\n");
             }
             Console.WriteLine("\n\n");
-            Console.WriteLine("Press return to continue for Exercise #2> ");
-            Console.WriteLine("Display all products from the \"product\" table in \"bestbuy\" schema from MySql DB> ");
-
+            Console.WriteLine("Press return to continue for the BONUS feature: Updating a product> ");
+            Console.WriteLine("In this case we are updating the productID 946 \"Baritone Sax\" from MySql DB> ");
             Console.ReadLine();
 
 
@@ -58,15 +57,39 @@ namespace ORM_Dapper
 
             //---------Vid 12:10------------------------------
             //BONUS
+            Console.WriteLine("Press Return to Update this product> ");
+            Console.WriteLine("----------------------------------------");
+            var viewProduct = productRepository.GetProduct(946);
+            Console.WriteLine($"ProductID: {viewProduct.ProductID}, \tName:{viewProduct.Name}, \t\t\tPrice:{viewProduct.Price}, \tCategoryID:{viewProduct.CategoryID}, \tOnSale:{viewProduct.OnSale}, \tStockLevel{viewProduct.StockLevel}");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Press Return to Update this product> ");
+            Console.ReadLine();
+
+            Console.WriteLine("Enter a new Product Name> ");
+            string updName = Console.ReadLine();
+
+            Console.WriteLine("Enter a new Price> ");
+            int updPrice = int.Parse(Console.ReadLine());
+
             var productToUpdate = productRepository.GetProduct(946);
-            productToUpdate.Name       = "UPDATED!!!";
-            productToUpdate.Price      = 1000;
+            productToUpdate.Name       = updName;
+            productToUpdate.Price      = updPrice;
             productToUpdate.CategoryID = 1;
             productToUpdate.OnSale     = false;
             productToUpdate.StockLevel = 2;
 
             productRepository.UpdateProduct(productToUpdate);
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Press return to continue for Exercise #2> ");
+            Console.WriteLine("Display all products from the \"product\" table in \"bestbuy\" schema from MySql DB> ");
+            Console.ReadLine();
 
+            Console.WriteLine("----------------------------------------");
+            viewProduct = productRepository.GetProduct(946);
+            Console.WriteLine($"ProductID: {viewProduct.ProductID}, \tName:{viewProduct.Name}, \t\t\tPrice:{viewProduct.Price}, \tCategoryID:{viewProduct.CategoryID}, \tOnSale:{viewProduct.OnSale}, \tStockLevel{viewProduct.StockLevel}");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Updated product> ");
+            Console.ReadLine();
 
 
             //------------------------------str.Substring(indx,5)
@@ -76,8 +99,8 @@ namespace ORM_Dapper
             Console.WriteLine("\n\n\n\n\n");
             foreach (var product in products)
             {
-                Console.WriteLine($"ProductID: {product.ProductID}, \tName:{product.Name}, \t\t\tPrice:{product.Price}, \tCategoryID:{product.CategoryID}, \tOnSale:{product.OnSale}, \tStockLevel{product.StockLevel}");
-                //Console.WriteLine($"ProductID: {product.ProductID}, \tName:{(product.Name).Substring(0, 5)}, \t\t\tPrice:{product.Price}, \tCategoryID:{product.CategoryID}, \tOnSale:{product.OnSale}, \tStockLevel{product.StockLevel}");                
+                //Console.WriteLine($"ProductID: {product.ProductID}, \tName:{product.Name}, \t\t\tPrice:{product.Price}, \tCategoryID:{product.CategoryID}, \tOnSale:{product.OnSale}, \tStockLevel{product.StockLevel}");
+                Console.WriteLine($"ProductID: {product.ProductID}, \tName:{(product.Name).Substring(0, 4)}, \t\t\tPrice:{product.Price}, \tCategoryID:{product.CategoryID}, \tOnSale:{product.OnSale}, \tStockLevel{product.StockLevel}");                
                 //Console.WriteLine(product.Name);
                 //Console.WriteLine(product.Price);
                 //Console.WriteLine(product.CategoryID);

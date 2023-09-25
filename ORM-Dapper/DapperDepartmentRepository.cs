@@ -32,6 +32,7 @@ namespace ORM_Dapper
         public void InsertDepartment(string name)
         {
             _conn.Execute("INSERT INTO departments (Name) VALUES (@name)", new { name = name } );
+            //Parameterized Statement, Anonymouns Type (place holders) <==> Temporary Object to safely pass in parameters
         }
 
     }//class
