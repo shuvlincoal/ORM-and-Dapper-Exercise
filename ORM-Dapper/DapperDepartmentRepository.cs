@@ -7,6 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 
+
+//Class  <==> table
+//Colums <==> properties
+
 namespace ORM_Dapper
 {
     public class DapperDepartmentRepository : IDepartmentRepository
